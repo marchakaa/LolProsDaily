@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LolProsDaily - Guess the Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0A1428;
+            color: #C8AA6E;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #091428;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #F0E6D2;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .game-container {
+            background-color: #091428;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        .input-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        #player-input {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            width: 60%;
+        }
+        .attribute-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .attribute-table th, .attribute-table td {
+            border: 1px solid #C8AA6E;
+            padding: 10px;
+            text-align: center;
+        }
+        .attribute-table th {
+            background-color: #1E2328;
+        }
+        .attribute-table td {
+            background-color: #0A1428;
+        }
+
+        td.correct {
+            background-color: #28a745; /* Зелен цвят за правилен отговор */
+            color: white;
+        }
+        td.incorrect {
+            background-color: #dc3545; /* Червен цвят за грешен отговор */
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>LolProsDaily</h1>
+        <p>Guess the Pro Player</p>
+    </header>
+    
+    <div class="container">
+        <div class="game-container">
+            <div class="input-container">
+                <input type="text" id="player-input" placeholder="Enter player name" autofocus>
+            </div>
+            
+            <table class="attribute-table">
+                <thead>
+                    <tr>
+                        <th>Player Name</th>
+                        <th>Nationality</th>
+                        <th>Current Team</th>
+                        <th>League</th>
+                        <th>Active</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody id="results-body">
+                    <td class="correct">123</td>
+                    <!-- Резултатите ще бъдат добавени тук динамично -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
