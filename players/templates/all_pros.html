@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}All Pros - LolProsDaily{% endblock %}
+
+{% block header %}All Pro Players{% endblock %}
+
+{% block content %}
+<div class="player-cards-container">
+    {% for player in players %}
+    <div class="player-card">
+        <img src="{{ player.image_url }}" alt="{{ player.name }}" class="player-image">
+        <div class="player-info">
+            <h2>{{ player.name }}</h2>
+            <p><strong>Nationality:</strong>
+            {% if player.country_code %}
+                <img src="{% static 'flags/'|add:player.country_code|lower|add:'.png' %}" alt="{{ player.nationality }} flag" class="flag-icon">
+            {% endif %}
+            {{ player.nationality }}</p>
+            <p><strong>Current Team:</strong> {{ player.current_team }}</p>
+            <p><strong>League:</strong> {{ player.league }}</p>
+            <p><strong>Active:</strong> {{ player.is_active }}</p>
+            <p><strong>Role:</strong> 
+            {% with icon_path="icons/"|add:player.role|lower|add:".png" %}
+                <img src="{% static icon_path %}" alt="{{ player.role }} icon" class="role-icon">
+            {% endwith %}
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

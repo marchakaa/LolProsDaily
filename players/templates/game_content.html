@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="game-container">
+        <div class="input-container">
+            <p id="error-message">You have already guessed this player.</p>
+            <input type="text" id="player-input" placeholder="Enter player name" autofocus>
+        </div>
+        
+        <table class="attribute-table">
+            <thead>
+                <tr>
+                    <th>Player Name</th>
+                    <th>Nationality</th>
+                    <th>Current Team</th>
+                    <th>League</th>
+                    <th>Active</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+            <tbody id="results-body">
+                <!-- Резултатите ще бъдат добавени тук динамично -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="congratulations-popup" class="popup">
+    <div class="popup-content">
+        <h2>Congratulations!</h2>
+        <p>You've guessed the player correctly!</p>
+        <button id="play-again-btn">Play Again</button>
+    </div>
+</div>

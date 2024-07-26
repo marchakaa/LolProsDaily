@@ -6,10 +6,31 @@ from django.core.cache import cache
 from datetime import datetime
 from .utils import get_random_player
 
+from random import choice
+
+from .country import get_country_code
+
 def home(request):
     if 'guessed_players' in request.session:
         del request.session['guessed_players']
     return render(request, 'home.html')
+
+def practice(request):
+    # Logic for practice mode
+    if 'guessed_players' in request.session:
+        del request.session['guessed_players']
+    get_random_player_each_refresh();
+    return render(request, 'practice.html')
+
+def all_pros(request):
+    players = Player.objects.all()
+    for player in players:
+        player.country_code = get_country_code(player.nationality)
+    
+    context = {
+        'players': players,
+    }
+    return render(request, 'all_pros.html', context)
 
 def guess_player(request):
     if request.method == 'GET':
@@ -75,3 +96,8 @@ def get_daily_player():
             cache.set(cache_key, player, 86400)  # Съхранява се за 24 часа
     return player
 
+def get_random_player_each_refresh():
+    players = Player.objects.all()
+    if players:
+        return choice(players)
+    return None

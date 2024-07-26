@@ -8,6 +8,7 @@ class Player(models.Model):
     league = models.CharField(max_length=100)
     is_active = models.BooleanField(default=True)
     role = models.CharField(max_length=50)
+    image_url = models.URLField(max_length=200, blank=True, null=True)
 
     def __str__(self):
         return self.name

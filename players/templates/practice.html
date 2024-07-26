@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Practice - LolProsDaily{% endblock %}
+
+{% block header %}Practice Mode{% endblock %}
+
+{% block content %}
+<p>Here you can practice guessing as many players as you like!</p>
+{% include 'game_content.html' %}
+<script src="../static/js/game.js"></script>
+{% endblock %}
