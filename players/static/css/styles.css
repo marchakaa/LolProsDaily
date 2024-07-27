@@ -21,6 +21,39 @@ h1 {
     font-size: 2.5em;
     margin-bottom: 10px;
 }
+/* Styling for the input field */
+#player-input {
+    width: 100%; /* Full width */
+    max-width: 600px; /* Maximum width */
+    padding: 12px 20px; /* Padding for a comfortable touch area */
+    font-size: 16px; /* Font size */
+    border: 2px solid #C8AA6E; /* Border color */
+    border-radius: 25px; /* Rounded corners */
+    background-color: #091428; /* Background color */
+    color: #F0E6D2; /* Text color */
+    outline: none; /* Remove default outline */
+    box-sizing: border-box; /* Include padding in width */
+    transition: border 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+#player-input:hover {
+    border-color: #F0E6D2; /* Change border color on focus */
+    box-shadow: 0 0 10px rgba(248, 236, 194, 0.3); /* Add a subtle glow */
+    background-color: #0A1428; /* Slightly brighter background on focus */
+}
+/* Focus effect */
+#player-input:focus {
+    border-color: #F0E6D2; /* Change border color on focus */
+    box-shadow: 0 0 10px rgba(248, 236, 194, 0.5); /* Add a subtle glow */
+    background-color: #0A1428; /* Slightly brighter background on focus */
+}
+
+/* Placeholder text style */
+#player-input::placeholder {
+    color: #C8AA6E; /* Placeholder text color */
+    opacity: 0.7; /* Slight transparency for placeholder */
+}
+
 .game-container {
     background-color: #091428;
     padding: 20px;

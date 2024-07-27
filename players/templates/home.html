@@ -5,7 +5,12 @@
 {% block header %}Today's Pro{% endblock %}
 
 {% block content %}
+<div class="container" id="home-page">
+    {% include 'game_content.html' %}
+</div>
 
-{% include 'game_content.html' %}
-<script src="../static/js/game.js"></script>
+{% block scripts %}
+{% load static %}
+<script src="{% static 'js/game.js' %}"></script>
+{% endblock %}
 {% endblock %}

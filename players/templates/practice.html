@@ -6,6 +6,12 @@
 
 {% block content %}
 <p>Here you can practice guessing as many players as you like!</p>
-{% include 'game_content.html' %}
-<script src="../static/js/game.js"></script>
+<div class="container" id="practice-page">
+    {% include 'game_content.html' %}
+</div>
+
+{% load static %}
+{% block scripts %}
+<script src="{% static 'js/game.js' %}"></script>
+{% endblock %}
 {% endblock %}
