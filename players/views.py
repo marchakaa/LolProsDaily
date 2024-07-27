@@ -11,23 +11,17 @@ from random import choice
 from .country import get_country_code
 
 def home(request):
-    # Clear guessed players for home mode on each load
-    request.session['guessed_players_home'] = []
-
-    daily_player = get_daily_player()
-    context = {
-        'daily_player': daily_player,
-    }
-    return render(request, 'home.html', context)
-
+    if 'guessed_players' in request.session:
+        del request.session['guessed_players']
+    return render(request, 'home.html')
 
 def practice(request):
-    # Clear guessed players for practice mode on each load
-    request.session['guessed_players_practice'] = []
-
-    # Optionally, get a new random player for practice mode
-    get_random_player_each_refresh()
+    # Logic for practice mode
+    if 'guessed_players' in request.session:
+        del request.session['guessed_players']
+    get_random_player_each_refresh();
     return render(request, 'practice.html')
+
 def all_pros(request):
     players = Player.objects.all()
     for player in players:
@@ -41,56 +35,53 @@ def all_pros(request):
 def guess_player(request):
     if request.method == 'GET':
         player_name = request.GET.get('name', '').strip()
-        page_type = request.GET.get('page_type', 'home')
+        daily_player = get_daily_player()
 
-        if page_type == 'home':
-            daily_player = get_daily_player()
-            session_key = 'daily_guessed_players'
-        else:
-            daily_player = get_random_player_each_refresh()
-            session_key = 'practice_guessed_players'
-
-        if session_key not in request.session:
-            request.session[session_key] = []
+        if 'guessed_players' not in request.session:
+            request.session['guessed_players'] = []
 
         response_data = {
             'correct': False,
             'attributes': {}
         }
 
-        if player_name in request.session[session_key]:
+        if player_name in request.session['guessed_players']:
             response_data['message'] = 'You have already guessed this player.'
         else:
-            try:
-                guessed_player = Player.objects.get(name__iexact=player_name)
+            if daily_player:
+                try:
+                    guessed_player = Player.objects.get(name__iexact=player_name)
 
-                request.session[session_key].append(player_name)
-                request.session.modified = True
+                    # Добавяне на играча в сесията
+                    request.session['guessed_players'].append(player_name)
+                    request.session.modified = True
 
-                response_data['attributes'] = {
-                    'name': guessed_player.name,
-                    'nationality': guessed_player.nationality,
-                    'current_team': guessed_player.current_team,
-                    'league': guessed_player.league,
-                    'is_active': guessed_player.is_active,
-                    'role': guessed_player.role
-                }
+                    response_data['attributes'] = {
+                        'name': guessed_player.name,
+                        'nationality': guessed_player.nationality,
+                        'current_team': guessed_player.current_team,
+                        'league': guessed_player.league,
+                        'is_active': guessed_player.is_active,
+                        'role': guessed_player.role
+                    }
 
-                response_data['comparisons'] = {
-                    'nationality': guessed_player.nationality == daily_player.nationality,
-                    'current_team': guessed_player.current_team == daily_player.current_team,
-                    'league': guessed_player.league == daily_player.league,
-                    'is_active': guessed_player.is_active == daily_player.is_active,
-                    'role': guessed_player.role == daily_player.role
-                }
+                    response_data['comparisons'] = {
+                        'nationality': guessed_player.nationality == daily_player.nationality,
+                        'current_team': guessed_player.current_team == daily_player.current_team,
+                        'league': guessed_player.league == daily_player.league,
+                        'is_active': guessed_player.is_active == daily_player.is_active,
+                        'role': guessed_player.role == daily_player.role
+                    }
 
-                if player_name.lower() == daily_player.name.lower():
-                    response_data['message'] = 'Player found!'
-                    response_data['correct'] = True
-                else:
-                    response_data['message'] = 'Incorrect guess! Try again.'
-            except Player.DoesNotExist:
-                response_data['message'] = 'Player not found in the database.'
+                    if player_name.lower() == daily_player.name.lower():
+                        response_data['message'] = 'Player found!'
+                        response_data['correct'] = True
+                    else:
+                        response_data['message'] = 'Incorrect guess! Try again.'
+                except Player.DoesNotExist:
+                    response_data['message'] = 'Player not found in the database.'
+            else:
+                response_data['message'] = 'No player found for today.'
 
         return JsonResponse(response_data)
     
