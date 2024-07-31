@@ -101,3 +101,11 @@ def get_random_player_each_refresh():
     if players:
         return choice(players)
     return None
+
+def search_players(request):
+    query = request.GET.get('q', '').strip().lower()
+    if query:
+        players = Player.objects.filter(name__icontains=query)[:10]  # Adjust the number as needed
+        results = [{'name': player.name, 'image_url': player.image_url} for player in players]
+        return JsonResponse(results, safe=False)
+    return JsonResponse([], safe=False)

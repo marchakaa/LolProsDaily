@@ -300,3 +300,25 @@ header h1 {
     transform: scale(1.2);
     transition: transform 0.2s ease-in-out;
 }
+
+.suggestions-list .suggestion-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    color: #F0E6D2;
+    width: 400px;
+}
+
+.suggestions-list .suggestion-item:hover {
+    background-color: #C8AA6E;
+    color: #091428;
+}
+
+.suggestions-list .suggestion-item img {
+    margin-right: 10px;
+    border-radius: 50%;
+    object-fit: cover;
+    width: 30px;
+    height: 30px;
+}

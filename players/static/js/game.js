@@ -54,3 +54,66 @@ function showCongratulationsPopup() {
 document.getElementById('play-again-btn').addEventListener('click', function() {
     location.reload();
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const playerInput = document.getElementById('player-input');
+    const suggestionsList = document.getElementById('suggestions-list');
+
+    playerInput.addEventListener('input', function () {
+        const query = playerInput.value.trim().toLowerCase();
+
+        if (query.length < 1) {
+            suggestionsList.style.display = 'none';
+            return;
+        }
+
+        // Fetch matching players from the backend
+        fetch(`/search_players?q=${encodeURIComponent(query)}`)
+            .then(response => response.json())
+            .then(players => {
+                suggestionsList.innerHTML = '';
+
+                if (players.length === 0) {
+                    suggestionsList.style.display = 'none';
+                    return;
+                }
+
+                players.forEach(player => {
+                    const item = document.createElement('div');
+                    item.className = 'suggestion-item';
+
+                    // Create an image element for the player's image
+                    const img = document.createElement('img');
+                    img.src = player.image_url;
+                    img.alt = player.name;
+                    img.style.width = '30px';
+                    img.style.height = '30px';
+                    img.style.marginRight = '10px';
+
+                    // Create a span element for the player's name
+                    const span = document.createElement('span');
+                    span.textContent = player.name;
+
+                    // Append the image and name to the item
+                    item.appendChild(img);
+                    item.appendChild(span);
+
+                    item.addEventListener('click', () => {
+                        playerInput.value = player.name;
+                        suggestionsList.style.display = 'none';
+                        // Optionally, you can add code here to show the player details or proceed further
+                    });
+                    suggestionsList.appendChild(item);
+                });
+
+                suggestionsList.style.display = 'block';
+            })
+            .catch(error => console.error('Error fetching player data:', error));
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!playerInput.contains(event.target) && !suggestionsList.contains(event.target)) {
+            suggestionsList.style.display = 'none';
+        }
+    });
+});
