@@ -243,11 +243,10 @@ header h1 {
 
 .player-card {
     background-color: #091428;
-    /* border-color: orange; */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    width: 250px;
+    width: 250px; /* Fixed width for the card */
     text-align: center;
     transition: transform 0.2s;
 }
@@ -257,10 +256,13 @@ header h1 {
 }
 
 .player-image {
-    width: 100%;
-    height: auto;
+    width: 100%; /* Full width */
+    height: 200px; /* Fixed height */
+    object-fit: contain; /* Fit the image within the container without cropping */
     border-bottom: 1px solid #C8AA6E;
+    background-color: #0A1428; /* Background color to fill the empty space */
 }
+
 
 .player-info {
     padding: 15px;

@@ -1,0 +1,8 @@
+Faker;South Korea;⁠⁠T1;Mid;https://static.wikia.nocookie.net/lolesports_gamepedia_en/images/8/8d/T1_Faker_2024_Split_2.png/revision/latest/scale-to-width-down/220?cb=20240618150258;Yes
+Lebron;Bulgaria;⁠⁠Ramboot Club;Jungle;https://static.wikia.nocookie.net/lolesports_gamepedia_en/images/7/75/RBT_LeBron_2024_Split_1.png/revision/latest/scale-to-width-down/220?cb=20240202160652;Yes
+Lehends;South Korea;⁠⁠Gen.G;Support;https://static.wikia.nocookie.net/lolesports_gamepedia_en/images/2/29/GEN_Lehends_2024_Split_1.png/revision/latest/scale-to-width-down/220?cb=20240305182640;Yes
+Kiin;South Korea;⁠⁠Gen.G;Top;https://static.wikia.nocookie.net/lolesports_gamepedia_en/images/a/a5/GEN_Kiin_2024_Split_1.png/revision/latest/scale-to-width-down/220?cb=20240305181918;Yes
+Zeus;South Korea;⁠⁠T1;Top;https://static.wikia.nocookie.net/lolesports_gamepedia_en/images/6/69/T1_Zeus_2024_Split_2.png/revision/latest/scale-to-width-down/220?cb=20240618150302;Yes
+Keria;South Korea;⁠⁠T1;Support;https://static.wikia.nocookie.net/lolesports_gamepedia_en/images/9/92/T1_Keria_2024_Split_2.png/revision/latest/scale-to-width-down/220?cb=20240618150254;Yes
+Gumayusi;South Korea;⁠⁠T1;Bot;https://static.wikia.nocookie.net/lolesports_gamepedia_en/images/b/b3/T1_Gumayusi_2024_Split_2.png/revision/latest/scale-to-width-down/220?cb=20240618150256;Yes
+twohoyrz;Bulgaria;⁠⁠Ramboot Club;Mid;https://static.wikia.nocookie.net/lolesports_gamepedia_en/images/d/d4/RBT_twohoyrz_2024_Split_1.png/revision/latest/scale-to-width-down/220?cb=20240202160656;Yes

@@ -8,7 +8,7 @@
 {% block content %}
 <div class="player-cards-container">
     {% for player in players %}
-    <div class="player-card">
+    <div class="player-card" onmousemove="rotateCard(event, this)" onmouseout="resetCard(this)">
         <img src="{{ player.image_url }}" alt="{{ player.name }}" class="player-image">
         <div class="player-info">
             <h2>{{ player.name }}</h2>
@@ -18,7 +18,7 @@
             {% endif %}
             {{ player.nationality }}</p>
             <p><strong>Current Team:</strong> {{ player.current_team }}</p>
-            <p><strong>League:</strong> {{ player.league }}</p>
+            <p><strong>League:</strong> {{ player.league }}</p> 
             <p><strong>Active:</strong> {{ player.is_active }}</p>
             <p><strong>Role:</strong> 
             {% with icon_path="icons/"|add:player.role|lower|add:".png" %}
@@ -29,4 +29,7 @@
     </div>
     {% endfor %}
 </div>
+{% block scripts %}
+<script src="{% static 'js/all_players.js' %}"></script>
+{% endblock %}
 {% endblock %}
