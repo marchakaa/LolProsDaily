@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     item.addEventListener('click', () => {
                         playerInput.value = player.name;
+                        playerInput.focus();
                         suggestionsList.style.display = 'none';
                         // Optionally, you can add code here to show the player details or proceed further
                     });

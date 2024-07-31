@@ -23,18 +23,19 @@ h1 {
 }
 /* Styling for the input field */
 #player-input {
-    width: 100%; /* Full width */
-    max-width: 600px; /* Maximum width */
-    padding: 12px 20px; /* Padding for a comfortable touch area */
-    font-size: 16px; /* Font size */
-    border: 2px solid #C8AA6E; /* Border color */
-    border-radius: 25px; /* Rounded corners */
-    background-color: #091428; /* Background color */
-    color: #F0E6D2; /* Text color */
-    outline: none; /* Remove default outline */
-    box-sizing: border-box; /* Include padding in width */
-    transition: border 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    width: 100%; /* Full width of the container */
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 2px solid #C8AA6E;
+    border-radius: 25px;
+    background-color: #091428;
+    color: #F0E6D2;
+    outline: none;
+    box-sizing: border-box;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+    transition: 1s;
 }
+
 
 #player-input:hover {
     border-color: #F0E6D2; /* Change border color on focus */
@@ -43,6 +44,7 @@ h1 {
 }
 /* Focus effect */
 #player-input:focus {
+    width: 100%;
     border-color: #F0E6D2; /* Change border color on focus */
     box-shadow: 0 0 10px rgba(248, 236, 194, 0.5); /* Add a subtle glow */
     background-color: #0A1428; /* Slightly brighter background on focus */
@@ -62,11 +64,11 @@ h1 {
     margin-top: 20px;
 }
 .input-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    flex-direction: column;
-    align-items: center;
+    position: relative; /* Relative positioning for absolute child positioning */
+    width: 100%; /* Full width of parent container */
+    max-width: 600px; /* Max width of the input and suggestions */
+    margin: 0 auto; /* Center the container horizontally */
+    text-align: center; /* Center the contents inside the container */
 }
 #player-input {
     padding: 10px;
@@ -301,18 +303,29 @@ header h1 {
     transition: transform 0.2s ease-in-out;
 }
 
+/* Suggestions list directly under the input */
+.suggestions-list {
+    position: absolute;
+    top: 100%; /* Position directly below the input */
+    left: 0;
+    width: 100%; /* Match the width of the input container */
+    background-color: #091428;
+    border: 1px solid #C8AA6E;
+    border-radius: 5px;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Ensure padding/border included in the width */
+}
+
 .suggestions-list .suggestion-item {
-    display: flex;
-    align-items: center;
     padding: 10px;
     cursor: pointer;
     color: #F0E6D2;
-    width: 400px;
-}
-
-.suggestions-list .suggestion-item:hover {
-    background-color: #C8AA6E;
-    color: #091428;
+    display: flex;
+    align-items: center;
 }
 
 .suggestions-list .suggestion-item img {
@@ -321,4 +334,9 @@ header h1 {
     object-fit: cover;
     width: 30px;
     height: 30px;
+}
+
+.suggestions-list .suggestion-item:hover {
+    background-color: #C8AA6E;
+    color: #091428;
 }
